@@ -1,0 +1,20 @@
+digraph G {
+    "focused" [color=blue]
+    "error" [color=red]
+    "valid" [color=green]
+    "untouched"
+    "disabled" [color=grey]
+    "untouched" -> "focused" [label="focus"]
+    "untouched" -> "valid" [label="error===false"];
+    "untouched" -> "error" [label="error"];
+    "untouched" -> "disabled" [label="disabled"];
+    "focused" -> "error" [label="error"];
+    "focused" -> "valid" [label="error==false"];
+    "error" -> "focused" [label="focus"]
+    "error" -> "valid" [label="error=false"]
+    "error" -> "disabled" [label="disabled"];
+    "valid" -> "disabled" [label="disabled"];
+    "valid" -> "error" [label="error"]
+    "valid" -> "focused" [label="focus"]
+    "disabled" -> "untouched" [label="disabled===false"]
+}
