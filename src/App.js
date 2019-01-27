@@ -46,4 +46,8 @@ export default styled(App)`
   display: block;
   margin-left: auto;
   margin-right: auto;
+  
+  h1 {
+    color: white
+  }
 `;

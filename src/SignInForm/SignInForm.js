@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components'
-import TextField from '@material-ui/core/TextField';
+import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
 import { withFormik } from 'formik';
 
 import { fieldNames } from './SignInForm.constants';
+import StateStyledField from './StateStyledField'
 
-const SignInForm = ({ handleChange, handleBlur, values, errors }) => {
+const SignInForm = ({ className, handleChange, handleBlur, values, errors }) => {
     return (
-        <form>
-            <TextField
+        <form className={className}>
+            <StateStyledField
+                fullWidth
                 name={fieldNames.LOGIN}
                 label="Login"
                 value={values[fieldNames.LOGIN]}
@@ -19,9 +21,11 @@ const SignInForm = ({ handleChange, handleBlur, values, errors }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
             />
-            <TextField
+            <StateStyledField
+                fullWidth
                 name={fieldNames.PASSWORD}
-                label="Login"
+                label="Password"
+                type="password"
                 value={values[fieldNames.PASSWORD]}
                 error={errors[fieldNames.PASSWORD]}
                 margin="normal"
@@ -29,6 +33,14 @@ const SignInForm = ({ handleChange, handleBlur, values, errors }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
             />
+            <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                // disabled
+            >
+                Sign in
+            </Button>
         </form>
     );
 };
@@ -50,4 +62,13 @@ SignInForm.defaultProps = {};
 
 export default withFormik({
     name: SignInForm.displayName,
-})(SignInForm);
+})(styled(SignInForm)`
+  width: 100%;
+  margin-top: 8px;
+  
+  button {
+    margin-top: calc(2 * 8px);
+    color: white;
+    background-color: #2196f3;
+  }
+`);
