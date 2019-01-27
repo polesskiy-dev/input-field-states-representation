@@ -2,19 +2,19 @@ digraph G {
     "focused" [color=blue]
     "error" [color=red]
     "valid" [color=green]
-    "untouched"
+    "pristine"
     "disabled" [color=grey]
-    "untouched" -> "focused" [label="focus"]
-    "untouched" -> "valid" [label="error===false"];
-    "untouched" -> "error" [label="error"];
-    "untouched" -> "disabled" [label="disabled"];
+    "pristine" -> "focused" [label="focus"]
+    "pristine" -> "valid" [label="error=false"];
+    "pristine" -> "error" [label="error"];
+    "pristine" -> "disabled" [label="disabled"];
     "focused" -> "error" [label="error"];
-    "focused" -> "valid" [label="error==false"];
+    "focused" -> "valid" [label="error=false"];
     "error" -> "focused" [label="focus"]
     "error" -> "valid" [label="error=false"]
     "error" -> "disabled" [label="disabled"];
     "valid" -> "disabled" [label="disabled"];
     "valid" -> "error" [label="error"]
     "valid" -> "focused" [label="focus"]
-    "disabled" -> "untouched" [label="disabled===false"]
+    "disabled" -> "pristine" [label="disabled=false"]
 }
