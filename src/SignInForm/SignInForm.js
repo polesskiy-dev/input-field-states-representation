@@ -4,18 +4,20 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import { withFormik } from 'formik';
 
+import StateStyledField from './StateField/StateStyledField'
 import { fieldNames } from './SignInForm.constants';
-import StateStyledField from './StateStyledField'
+import  { validationSchema } from "./SignUpForm.validation";
+
 
 const SignInForm = ({ className, handleChange, handleBlur, values, errors }) => {
     return (
         <form className={className}>
             <StateStyledField
                 fullWidth
-                name={fieldNames.LOGIN}
-                label="Login"
-                value={values[fieldNames.LOGIN]}
-                error={errors[fieldNames.LOGIN]}
+                name={fieldNames.EMAIL}
+                label="Email"
+                value={values[fieldNames.EMAIL]}
+                error={errors[fieldNames.EMAIL]}
                 margin="normal"
                 variant="outlined"
                 onChange={handleChange}
@@ -49,11 +51,11 @@ SignInForm.propTypes = {
     handleChange: PropTypes.func.isRequired,
     handleBlur: PropTypes.func.isRequired,
     values: PropTypes.shape({
-        [fieldNames.LOGIN]: PropTypes.string,
+        [fieldNames.EMAIL]: PropTypes.string,
         [fieldNames.PASSWORD]: PropTypes.string,
     }).isRequired,
     errors: PropTypes.shape({
-        [fieldNames.LOGIN]: PropTypes.string,
+        [fieldNames.EMAIL]: PropTypes.string,
         [fieldNames.PASSWORD]: PropTypes.string,
     }).isRequired,
 };
@@ -62,6 +64,8 @@ SignInForm.defaultProps = {};
 
 export default withFormik({
     name: SignInForm.displayName,
+    validationSchema,
+    // TODO maybe default '' values
 })(styled(SignInForm)`
   width: 100%;
   margin-top: 8px;
