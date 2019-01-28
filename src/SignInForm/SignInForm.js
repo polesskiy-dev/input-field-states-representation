@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import { withFormik } from 'formik';
 
-import StateStyledField from './StateField/StateStyledField'
+import StateField from './StateField/StateField'
 import { fieldNames } from './SignInForm.constants';
 import  { validationSchema } from "./SignUpForm.validation";
 
@@ -12,7 +12,7 @@ import  { validationSchema } from "./SignUpForm.validation";
 const SignInForm = ({ className, handleChange, handleBlur, values, errors }) => {
     return (
         <form className={className}>
-            <StateStyledField
+            <StateField
                 fullWidth
                 name={fieldNames.EMAIL}
                 label="Email"
@@ -23,7 +23,7 @@ const SignInForm = ({ className, handleChange, handleBlur, values, errors }) => 
                 onChange={handleChange}
                 onBlur={handleBlur}
             />
-            <StateStyledField
+            <StateField
                 fullWidth
                 name={fieldNames.PASSWORD}
                 label="Password"
